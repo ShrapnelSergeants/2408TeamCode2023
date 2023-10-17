@@ -29,8 +29,10 @@
 
 package org.firstinspires.ftc.robotcontroller.external.samples;
 
+import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.IMU;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.Range;
 
@@ -65,6 +67,24 @@ public class RobotHardware {
     private Servo   leftHand = null;
     private Servo   rightHand = null;
 
+    public IMU imu = null;
+
+    public double headingError= 0;
+
+    public double targetHeading= 0;
+    private double driveSpeed= 0;
+    public double turnSpeed= 0;
+    private double leftSpeed= 0;
+    private double rightSpeed= 0;
+    private int leftTarget= 0;
+    private int rightTarget= 0;
+
+    static final double DRIVER_SPEED = 0.4;
+    static final double TURN_SPEED = 0.2;
+    static final double HEADING_THRESHOLD = 1.0;
+    static final double P_TURN_GAIN = 0.02;
+    static final double P_DRIVE_GAIN = 0.03;
+
     // Define Drive constants.  Make them public so they CAN be used by the calling OpMode
     public static final double MID_SERVO       =  0.5 ;
     public static final double HAND_SPEED      =  0.02 ;  // sets rate to move servo
@@ -87,6 +107,14 @@ public class RobotHardware {
         leftDrive  = myOpMode.hardwareMap.get(DcMotor.class, "left_drive");
         rightDrive = myOpMode.hardwareMap.get(DcMotor.class, "right_drive");
         armMotor   = myOpMode.hardwareMap.get(DcMotor.class, "arm");
+//        RevHubOrientationOnRobot.LogoFacingDirection logoDirection= RevHubOrientationOnRobot.LogoFacingDirection.UP;
+//        RevHubOrientationOnRobot.UsbFacingDirection usbDirection= RevHubOrientationOnRobot.UsbFacingDirection.FORWARD;
+//        RevHubOrientationOnRobot orientationOnRobot= new RevHubOrientationOnRobot(logoDirection, usbDirection);
+
+
+
+//        imu = myOpMode.hardwareMap.get(IMU.class, "imu");
+//        imu.initialize(new IMU.Parameters(orientationOnRobot));
 
         // To drive forward, most robots need the motor on one side to be reversed, because the axles point in opposite directions.
         // Pushing the left stick forward MUST make robot go forward. So adjust these two lines based on your first test drive.
