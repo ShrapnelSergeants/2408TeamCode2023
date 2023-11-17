@@ -32,16 +32,17 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 /**
  * Demonstrates empty OpMode
  */
-@Autonomous(name="Auto Mecanum", group="Auto")
-//@Disabled
+@Autonomous(name="right1Auto Mecanum", group="Auto")
+@Disabled
 
-public class automecanum2023 extends LinearOpMode {
+public class right1automecanum2023 extends LinearOpMode {
     RobotHardware robot = new RobotHardware(this);
     private ElapsedTime runtime = new ElapsedTime();
 
@@ -53,13 +54,13 @@ public class automecanum2023 extends LinearOpMode {
 
         robot.spinMecanum(-.15);
         runtime.reset();
-        while(opModeIsActive() && runtime.seconds() < 3){//2
+        while(opModeIsActive() && runtime.seconds() < 2.4){//2
             telemetry.addData("Step 1", "Current runtime: "+ runtime.seconds()+"/1");//1
             telemetry.update();
         }
         robot.driveMecanum(.5);
         runtime.reset();
-        while(opModeIsActive() && runtime.seconds()<0.90){//2
+        while(opModeIsActive() && runtime.seconds()<1.5){//2
             telemetry.addData("Step 2", "Current runtime: "+ runtime.seconds()+"/3");//3
             telemetry.update();
         }

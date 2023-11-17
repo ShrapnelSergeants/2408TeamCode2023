@@ -27,10 +27,10 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
             // Initialize the hardware variables. Note that the strings used here must correspond
             // to the names assigned during the robot configuration step on the DS or RC devices.
-            leftFrontDrive  = hardwareMap.get(DcMotor.class, "left_front_drive");
-            leftBackDrive  = hardwareMap.get(DcMotor.class, "left_back_drive");
-            rightFrontDrive = hardwareMap.get(DcMotor.class, "right_front_drive");
-            rightBackDrive = hardwareMap.get(DcMotor.class, "right_back_drive");
+            leftFrontDrive  = hardwareMap.get(DcMotor.class, "left_front_drive");//"left_front_drive
+            leftBackDrive  = hardwareMap.get(DcMotor.class, "left_back_drive");//left_back_drive
+            rightFrontDrive = hardwareMap.get(DcMotor.class, "right_front_drive");//right_front_drive
+            rightBackDrive = hardwareMap.get(DcMotor.class, "right_back_drive");//right_back_drive
             //elevatorDrive = hardwareMap.get(DcMotor.class, "elevator_drive");
             //arm_right = hardwareMap.get(DcMotor.class, "arm_right");
             //arm_left = hardwareMap.get(DcMotor.class, "arm_left");
@@ -48,10 +48,10 @@ import com.qualcomm.robotcore.util.ElapsedTime;
             // when you first test your robot, push the left joystick forward and observe the direction the wheels turn.
             // Reverse the direction (flip FORWARD <-> REVERSE ) of any wheel that runs backward
             // Keep testing until ALL the wheels move the robot forward when you push the left joystick forward.
-            leftFrontDrive.setDirection(DcMotor.Direction.FORWARD);
-            leftBackDrive.setDirection(DcMotor.Direction.FORWARD);
-            rightFrontDrive.setDirection(DcMotor.Direction.REVERSE);
-            rightBackDrive.setDirection(DcMotor.Direction.REVERSE);
+            leftFrontDrive.setDirection(DcMotor.Direction.REVERSE);//forward
+            leftBackDrive.setDirection(DcMotor.Direction.REVERSE);//for// ward
+            rightFrontDrive.setDirection(DcMotor.Direction.FORWARD);//reverse
+            rightBackDrive.setDirection(DcMotor.Direction.FORWARD);//reverse
             //arm_right.setDirection(DcMotor.Direction.REVERSE);
             //arm_upper.setDirection(DcMotor.Direction.REVERSE);
 
@@ -67,17 +67,17 @@ import com.qualcomm.robotcore.util.ElapsedTime;
                 double max;
 
                 // POV Mode uses left joystick to go forward & strafe, and right joystick to rotate.
-                double axial   = -gamepad1.left_stick_y;  // Note: pushing stick forward gives negative value
-                double lateral =  gamepad1.left_stick_x;
+                double axial   = gamepad1.left_stick_y;  // Note: pushing stick forward gives negative value
+                double lateral = -gamepad1.left_stick_x; //Note: added negative to correct controls
                 double yaw     =  gamepad1.right_stick_x;
 
 
                 // Combine the joystick requests for each axis-motion to determine each wheel's power.
                 // Set up a variable for each drive wheel to save the power level for telemetry.
-                double leftFrontPower  = axial + lateral + yaw;
-                double rightFrontPower = axial - lateral - yaw;
-                double leftBackPower   = axial - lateral + yaw;
-                double rightBackPower  = axial + lateral - yaw;
+                double leftFrontPower  = axial + lateral - yaw;//+ +
+                double rightFrontPower = axial - lateral + yaw;//- -
+                double leftBackPower   = axial - lateral - yaw;//- +
+                double rightBackPower  = axial + lateral + yaw;//+ -
 
                 // Normalize the values so no wheel power exceeds 100%
                 // This ensures that the robot maintains the desired motion.

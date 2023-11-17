@@ -33,6 +33,7 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.hardware.IMU;
@@ -43,7 +44,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.YawPitchRollAngles;
  * Demonstrates empty OpMode
  */
 @Autonomous(name="Auto Mecanum w IMU", group="Auto")
-//@Disabled
+@Disabled
 
 public class AutoWithIMU extends LinearOpMode {
     RobotHardware robot = new RobotHardware(this);
